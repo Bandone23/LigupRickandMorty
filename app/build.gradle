@@ -132,11 +132,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}"
 
 
-    //debugImplementation "com.readystatesoftware.chuck:library:${versions.chuck}"
-    //releaseImplementation "com.readystatesoftware.chuck:library-no-op:${versions.chuck}"
-
-    //debugImplementation "com.squareup.leakcanary:leakcanary-android:${versions.leakcanary}"
-
     debugImplementation "com.amitshekhar.android:debug-db:${versions.debug_db}"
 
 
