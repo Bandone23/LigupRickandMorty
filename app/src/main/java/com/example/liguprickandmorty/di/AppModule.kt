@@ -3,9 +3,15 @@ package com.example.liguprickandmorty.di
 import android.content.Context
 import android.net.ConnectivityManager
 import com.example.liguprickandmorty.URL_BASE_API
+import com.example.liguprickandmorty.data.remote.net.CharacterApi
+import com.example.liguprickandmorty.data.remote.source.CharacterRemoteDataSource
+import com.example.liguprickandmorty.data.repository.CharacterRepository
+import com.example.liguprickandmorty.domain.usecase.GetCharacterUseCase
+import com.example.liguprickandmorty.presentation.CharacterViewModel
 import com.squareup.picasso.Picasso
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -35,20 +41,20 @@ val appModule = module {
             .build()
     }
 
-   // single { get<Retrofit>().create(UserLoginRemoteApi::class.java) as UserLoginRemoteApi }
+    single { get<Retrofit>().create(CharacterApi::class.java) as CharacterApi }
 
 
     /* DataSource */
-  //  factory { LoginLocalDataSource(get()) }
+   factory { CharacterRemoteDataSource(get()) }
 
     /* Repositories */
- //   factory { UserLoginRepository(get()) }
+    factory { CharacterRepository(get()) }
 
     /* UseCases */
-  //  factory { GetUserLoginUseCase(get()) }
+    factory { GetCharacterUseCase(get()) }
 
 /* View models */
-    //viewModel { UserLoginViewModel(get(),get()) }
+    viewModel { CharacterViewModel(get()) }
 
 
     /* Picasso */
